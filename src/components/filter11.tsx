@@ -1,10 +1,9 @@
-import React from "react";
-
 const Filter = () => {
   return (
     <div className="m-2 max-w-screen-md">
       <div className="rounded-xl border border-gray-200 bg-white p-6">
         <div className="mt-2 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          
           <div className="flex flex-col">
             <label
               htmlFor="status"

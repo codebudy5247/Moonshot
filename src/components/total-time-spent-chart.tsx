@@ -30,6 +30,7 @@ const TotalTimeSpentChart = ({
         <Bar
           dataKey="total"
           fill="#0000FF"
+          className="cursor-pointer"
           onClick={(data) => onBarClick(data.name)}
         />
       </BarChart>
