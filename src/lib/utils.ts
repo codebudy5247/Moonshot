@@ -21,3 +21,8 @@ export const calculateTotalTimeSpent = (data: IAnalytics[]) => {
     { name: "F", total: totals.F },
   ];
 };
+
+export const handleError = (error: unknown) => {
+  console.error(error);
+  throw new Error(typeof error === "string" ? error : JSON.stringify(error));
+};
