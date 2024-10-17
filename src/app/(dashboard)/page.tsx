@@ -1,5 +1,5 @@
 import { getAnalytics } from "@/lib/get-analytics";
-import Charts from "@/components/charts";
+import Charts from "@/components/chart/charts";
 
 type DashboardProps = {
   searchParams: {
