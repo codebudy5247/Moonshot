@@ -26,3 +26,15 @@ export const handleError = (error: unknown) => {
   console.error(error);
   throw new Error(typeof error === "string" ? error : JSON.stringify(error));
 };
+
+export const formatDate = (timestamp: number) => {
+  const date = new Date(timestamp);
+  const formattedDate = date.toLocaleDateString("en-GB");
+  const formattedTime = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+  return `${formattedDate} ${formattedTime}`;
+};
+

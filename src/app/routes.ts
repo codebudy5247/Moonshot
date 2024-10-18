@@ -1,18 +1,25 @@
 export const unauthenticatedRoutes = [
-    {
-      title: "Signin",
-      path: "/signin",
-    },
-    {
-      title: "Signup",
-      path: "/signup",
-    },
-  ];
-  
-  export const routes = [
-    {
-      title: "Home",
-      path: "/",
-    },
-  ];
-  
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Signin",
+    path: "/signin",
+  },
+  {
+    title: "Signup",
+    path: "/signup",
+  },
+  {
+    title: "Email Dashboard",
+    path: "/email-dashboard",
+  },
+];
+
+export const routes = [
+  {
+    title: "Analytics Dashboard",
+    path: "/analytics-dashboard",
+  },
+];
