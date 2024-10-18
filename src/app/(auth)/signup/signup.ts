@@ -27,14 +27,14 @@ export default async function signup(formData: FormData) {
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const newUser = await db.user.create({
+    await db.user.create({
       data: {
         name,
         email,
         password: hashedPassword,
       },
     });
-    const { password: newUserPassword, ...rest } = newUser;
+    return { success: true };
   } catch (error) {
     handleError(error);
   }

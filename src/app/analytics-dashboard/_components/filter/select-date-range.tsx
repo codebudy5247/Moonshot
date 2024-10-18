@@ -1,17 +1,9 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
 
 const SelectDateRange = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  // const [startDate, setStartDate] = useState<string>(
-  //   searchParams.get("startDate") || ""
-  // );
-  // const [endDate, setEndDate] = useState<string>(
-  //   searchParams.get("endDate") || ""
-  // );
 
   const selectedStartDate = searchParams.get("startDate") || "";
   const selectedEndDate = searchParams.get("endDate") || "";
@@ -24,20 +16,13 @@ const SelectDateRange = () => {
     router.push(`?${queryParams.toString()}`);
   };
 
-  // useEffect(() => {
-  //   setStartDate(searchParams.get("startDate") || "");
-  //   setEndDate(searchParams.get("endDate") || "");
-  // }, [searchParams]);
-
   const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // setStartDate(value);
     updateDateRangeInURL(value, selectedEndDate);
   };
 
   const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // setEndDate(value);
     updateDateRangeInURL(selectedStartDate, value);
   };
 

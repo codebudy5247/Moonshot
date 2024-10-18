@@ -2,20 +2,22 @@
 import { useEffect, useState } from "react";
 import getMe from "@/app/(auth)/get-me";
 import logout from "@/app/(auth)/logout";
+
+type User = {
+  id: string;
+  email: string;
+  name: string;
+};
 const Header = () => {
-  const [user, setUser] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
     const fetchMe = async () => {
       const result = await getMe();
-      if (result?.error) {
-        setError(result.error);
-      } else {
+      if (result) {
         setUser(result.user);
       }
     };
-
     fetchMe();
   }, []);
 

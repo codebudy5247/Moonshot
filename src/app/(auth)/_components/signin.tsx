@@ -23,7 +23,7 @@ const Signin = () => {
       } else {
         router.push("/analytics-dashboard");
       }
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred.");
     } finally {
       setLoading(false);
