@@ -21,7 +21,7 @@ const Signin = () => {
       if (result?.error) {
         setError(result.error);
       } else {
-        router.push("/");
+        router.push("/analytics-dashboard");
       }
     } catch (err) {
       setError("An unexpected error occurred.");

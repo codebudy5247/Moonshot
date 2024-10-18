@@ -1,5 +1,5 @@
-import { getAnalytics } from "@/lib/get-analytics";
-import Charts from "@/components/chart/charts";
+import { getAnalytics } from "./get-analytics";
+import Charts from "./_components/charts";
 
 type DashboardProps = {
   searchParams: {
@@ -10,12 +10,17 @@ type DashboardProps = {
   };
 };
 export default async function Dashboard({ searchParams }: DashboardProps) {
-  const analyticsData = await getAnalytics(
-    searchParams?.age!,
-    searchParams?.gender!,
-    searchParams?.startDate!,
-    searchParams?.endDate!
-  );
+  const ageFilter = searchParams.age || "";
+  const genderFilter = searchParams.gender || "";
+  const startDate = searchParams.startDate || "";
+  const endDate = searchParams.endDate || "";
+
+  const analyticsData = await getAnalytics({
+    ageFilter,
+    genderFilter,
+    startDate,
+    endDate,
+  });
 
   return (
     <main className="flex flex-1 flex-col gap-2 p-4 lg:gap-6 lg:p-6">

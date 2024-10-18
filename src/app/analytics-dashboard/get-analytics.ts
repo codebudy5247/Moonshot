@@ -1,23 +1,26 @@
-import { NextResponse } from "next/server";
+"use server";
 import { promises as fs } from "fs";
 import * as path from "path";
 import * as XLSX from "xlsx";
 
-export async function GET(req: Request) {
-  const url = new URL(req.url);
-
-  const ageFilter = url.searchParams.get("age");
-  const genderFilter = url.searchParams.get("gender");
-  const startDate = url.searchParams.get("startDate");
-  const endDate = url.searchParams.get("endDate");
-
+export async function getAnalytics({
+  ageFilter,
+  genderFilter,
+  startDate,
+  endDate,
+}: {
+  ageFilter?: string;
+  genderFilter?: string;
+  startDate?: string;
+  endDate?: string;
+}) {
   try {
     const filePath = path.join(process.cwd(), "analytics-data.xlsx");
     const fileBuffer = await fs.readFile(filePath);
     const workbook = XLSX.read(fileBuffer, { type: "buffer" });
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
-    let jsonData:IAnalytics[] = XLSX.utils.sheet_to_json(sheet);
+    let jsonData: IAnalytics[] = XLSX.utils.sheet_to_json(sheet);
 
     jsonData = jsonData.map((row) => {
       if (row.Day && typeof row.Day === "number") {
@@ -29,9 +32,9 @@ export async function GET(req: Request) {
     // Filter based on age
     if (ageFilter) {
       jsonData = jsonData.filter((row) => {
-        const age = row.Age
+        const age = row.Age;
         if (ageFilter === "15-25") {
-          return age === "15-25"
+          return age === "15-25";
         } else if (ageFilter === ">25") {
           return age === ">25";
         }
@@ -54,13 +57,10 @@ export async function GET(req: Request) {
       });
     }
 
-    return NextResponse.json({ data: jsonData }, { status: 200 });
+    return { data: jsonData };
   } catch (error) {
     console.error("Error reading or parsing the file:", error);
-    return NextResponse.json(
-      { message: "Something went wrong!" },
-      { status: 500 }
-    );
+    throw new Error("Something went wrong!");
   }
 }
 

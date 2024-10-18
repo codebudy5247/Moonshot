@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import TotalTimeSpentChart from "./total-time-spent-chart";
 import TimeTrendChart from "./time-trend-chart";
-import SelectAge from "../filter/select-age";
-import SelectGender from "../filter/select-gender";
-import SelectDateRange from "../filter/select-date-range";
+import SelectAge from "./filter/select-age";
+import SelectGender from "./filter/select-gender";
+import SelectDateRange from "./filter/select-date-range";
 
 type ChartsProps = {
   analyticsData: IAnalytics[];

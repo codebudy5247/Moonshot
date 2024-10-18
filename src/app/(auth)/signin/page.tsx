@@ -1,4 +1,4 @@
-import Signin from '@/components/auth/signin'
+import Signin from '@/app/(auth)/_components/signin'
 
 const page = () => {
   return (

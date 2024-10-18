@@ -1,5 +1,4 @@
-import Header from "@/components/header";
-import AuthProvider from "../auth-provider";
+import Header from "./_components/header";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
